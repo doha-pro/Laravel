@@ -34,7 +34,7 @@ class Controller extends BaseController
     $index=$id-1;
     $item=$this->products[$index];
 
-    return view('products-details/{id}',['product' => $item] );
+    return view('product-details',['product' => $item] );
             
     }
 }
