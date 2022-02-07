@@ -12,6 +12,15 @@
     @csrf
         Name: <input type="text" name="name">
         <button>Submit</button>
+        @if ($errors->any())
+            <div style="color:red">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </form>
 </body>
 </html>

@@ -32,7 +32,12 @@ tr:nth-child(even) {
   @foreach ($categories as $category)
   <tr>
     <td>{{ $category->id }}</td>
-    <td>{{ $category-> name }}</td>
+    <td>
+      <a href="/category-articles/{{$category -> id }}">
+
+        {{ $category-> name }}
+      </a>
+     </td>
     <td><a href="/delete/{{ $category -> id }}">Delete </a></td>
     <td><a href="/update/{{ $category -> id }}">Update</a></td>
   </tr>

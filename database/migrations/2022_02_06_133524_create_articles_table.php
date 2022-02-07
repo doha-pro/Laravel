@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('name');
             $table->text('details');
             $table->string('slug') -> unique();
-            $table->boolean('is used')->default(True);
+            $table->boolean('is used')->default(false);
             $table->integer('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

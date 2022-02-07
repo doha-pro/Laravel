@@ -16,6 +16,15 @@
         Slug: <input type="text" name="slug"  [value]="{{$article.slug}}">
         Category Id: <input type="text" name="categoryId" [value]="{{$article.category_id}}">
         <button>Submit</button>
+        @if ($errors->any())
+            <div style="color:red">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </form>
 </body>
 </html>

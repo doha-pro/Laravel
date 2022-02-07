@@ -21,8 +21,7 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<h2>Articles Table</h2>
-<h2>Add Article <a href="/createArticle">here</a></h2>
+<h2>Articles for {{$category->name}} </h2>
 <table>
   <tr>
     <th>Id</th>
@@ -33,6 +32,7 @@ tr:nth-child(even) {
   <tr>
     <td>{{ $article->id }}</td>
     <td>{{ $article-> name }}</td>
+    <td>{{ $article-> details }}</td>
     <td><a href="/deleteArticle/{{ $article -> id }}">Delete </a></td>
     <td><a href="/updateArticle/{{ $article -> id }}">Update</a></td>
   </tr>

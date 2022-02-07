@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\CategoryRequest as RequestsCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Article;
 
 class CategoryController extends Controller
 {
@@ -21,8 +24,8 @@ class CategoryController extends Controller
     
         return view('category.update',['category'=>$category ]);
     }
-    public function updateCategory(Request $request){
-    
+    public function updateCategory(RequestsCategoryRequest $request){
+        $validated = $request->validated();
         $category= DB::table('categories')
               ->where('id', $request->id)
               ->update(['name' => $request->name]);
@@ -35,8 +38,9 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    public function save(Request $request)
-    {
+    public function save(RequestsCategoryRequest $request)
+    {  
+        $validated = $request->validated();
         $category = new Category;
         $category -> name = $request -> name;
         $category->save(); // INSERT INTO TABLE 
@@ -51,5 +55,10 @@ class CategoryController extends Controller
 
        
         return redirect()->route('categories.list');
+}
+public function showAllArticles($id){
+    $category = DB::table('categories')->where('id', $id)->first();
+    $articles=Category::find($id)->articles;
+return view('category.articles',['articles'=>$articles ,'category'=>$category]);
 }
 }

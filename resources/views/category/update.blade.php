@@ -13,6 +13,15 @@
     @csrf
        <input type="hidden" name="id" [value]="{{$category.id}}">
         Name: <input type="text" name="name" [value]="{{$category.name}}" >
+        @if ($errors->any())
+            <div style="color:red">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <button>update</button>
     </form>
 </body>

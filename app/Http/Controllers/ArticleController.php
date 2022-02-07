@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,7 +13,8 @@ class ArticleController extends Controller
     {
         return view('article.add');
     }
-    public function save(Request $request){
+    public function save(ArticleRequest $request){
+        $validated = $request->validated();
         $article= new Article;
         $article -> name = $request -> name;
         $article -> details = $request -> details;
@@ -18,7 +22,7 @@ class ArticleController extends Controller
         $article -> category_id = $request -> categoryId;
         $article->save(); // INSERT INTO TABLE 
     
-        return redirect()->route('article.list');
+        return redirect()->route('articles.list');
         // save new category
     }
     public function list()
@@ -35,8 +39,10 @@ class ArticleController extends Controller
     
         return view('article.update',['article'=>$article ]);
     }
-    public function updateArticle(Request $request){
+    public function updateArticle(ArticleRequest $request){
+
     
+        $validated = $request->validated();
         $article= DB::table('articles')
               ->where('id', $request->id)
               ->update(['name' => $request->name,'details' => $request -> details,'slug' => $request -> slug,'category_id' => $request -> categoryId]);
