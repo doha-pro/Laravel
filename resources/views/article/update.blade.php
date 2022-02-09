@@ -10,11 +10,11 @@
     <h1>Add Article</h1>
     <form method="POST" action="{{ route('article.updating') }}">
     @csrf
-        <input type="hidden" name="id" [value]="{{$article.id}}">
-        Name: <input type="text" name="name" [value]="{{$article.name}}">
-        Details: <input type="textarea" name="details" [value]={{$article.Details}}>
-        Slug: <input type="text" name="slug"  [value]="{{$article.slug}}">
-        Category Id: <input type="text" name="categoryId" [value]="{{$article.category_id}}">
+        <input type="hidden" name="id" value="{{$article->id}}">
+        Name: <input type="text" name="name" value="{{$article->name}}">
+        Details: <input type="textarea" name="details" value="{{$article->details}}">
+        Slug: <input type="text" name="slug"  value="{{$article->slug}}">
+        Category Id: <input type="text" name="categoryId" value="{{$article->category_id}}">
         <button>Submit</button>
         @if ($errors->any())
             <div style="color:red">

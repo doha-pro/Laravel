@@ -11,8 +11,8 @@
     <form method="POST" action="{{ route('category.updating')}}">
     
     @csrf
-       <input type="hidden" name="id" [value]="{{$category.id}}">
-        Name: <input type="text" name="name" [value]="{{$category.name}}" >
+       <input type="hidden" name="id" value="{{$category->id}}">
+        Name: <input type="text" name="name" value="{{$category->name}}" >
         @if ($errors->any())
             <div style="color:red">
                 <ul>
